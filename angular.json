@@ -121,7 +121,290 @@
           }
         }
       }
+    },
+    "jon-components": {
+      "root": "projects/jon-components",
+      "sourceRoot": "projects/jon-components/src",
+      "projectType": "library",
+      "prefix": "jon",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/jon-components/tsconfig.lib.json",
+            "project": "projects/jon-components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/jon-components/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/jon-components/src/test.ts",
+            "tsConfig": "projects/jon-components/tsconfig.spec.json",
+            "karmaConfig": "projects/jon-components/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/jon-components/tsconfig.lib.json",
+              "projects/jon-components/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "jonwebsite": {
+      "root": "projects/jonwebsite/",
+      "sourceRoot": "projects/jonwebsite/src",
+      "projectType": "application",
+      "prefix": "web",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/jonwebsite",
+            "index": "projects/jonwebsite/src/index.html",
+            "main": "projects/jonwebsite/src/main.ts",
+            "polyfills": "projects/jonwebsite/src/polyfills.ts",
+            "tsConfig": "projects/jonwebsite/tsconfig.app.json",
+            "assets": [
+              "projects/jonwebsite/src/favicon.ico",
+              "projects/jonwebsite/src/assets"
+            ],
+            "styles": [
+              "projects/jonwebsite/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/jonwebsite/src/environments/environment.ts",
+                  "with": "projects/jonwebsite/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "jonwebsite:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "jonwebsite:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "jonwebsite:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/jonwebsite/src/test.ts",
+            "polyfills": "projects/jonwebsite/src/polyfills.ts",
+            "tsConfig": "projects/jonwebsite/tsconfig.spec.json",
+            "karmaConfig": "projects/jonwebsite/karma.conf.js",
+            "styles": [
+              "projects/jonwebsite/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/jonwebsite/src/favicon.ico",
+              "projects/jonwebsite/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/jonwebsite/tsconfig.app.json",
+              "projects/jonwebsite/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "jonwebsite-e2e": {
+      "root": "projects/jonwebsite-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/jonwebsite-e2e/protractor.conf.js",
+            "devServerTarget": "jonwebsite:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "jonwebsite:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/jonwebsite-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "jonapp": {
+      "root": "projects/jonapp/",
+      "sourceRoot": "projects/jonapp/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/jonapp",
+            "index": "projects/jonapp/src/index.html",
+            "main": "projects/jonapp/src/main.ts",
+            "polyfills": "projects/jonapp/src/polyfills.ts",
+            "tsConfig": "projects/jonapp/tsconfig.app.json",
+            "assets": [
+              "projects/jonapp/src/favicon.ico",
+              "projects/jonapp/src/assets"
+            ],
+            "styles": [
+              "projects/jonapp/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/jonapp/src/environments/environment.ts",
+                  "with": "projects/jonapp/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "jonapp:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "jonapp:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "jonapp:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/jonapp/src/test.ts",
+            "polyfills": "projects/jonapp/src/polyfills.ts",
+            "tsConfig": "projects/jonapp/tsconfig.spec.json",
+            "karmaConfig": "projects/jonapp/karma.conf.js",
+            "styles": [
+              "projects/jonapp/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/jonapp/src/favicon.ico",
+              "projects/jonapp/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/jonapp/tsconfig.app.json",
+              "projects/jonapp/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "jonapp-e2e": {
+      "root": "projects/jonapp-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/jonapp-e2e/protractor.conf.js",
+            "devServerTarget": "jonapp:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "jonapp:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/jonapp-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
-  "defaultProject": "dynamic-form"
+  "defaultProject": "dynamic-form",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
