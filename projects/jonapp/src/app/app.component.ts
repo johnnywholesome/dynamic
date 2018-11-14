@@ -25,7 +25,10 @@ export class AppComponent {
     age: {
       label: 'Age',
       value: 41,
-      type: 'number'
+      type: 'number',
+      validators: {
+        min: 18
+      }
     },
     gender: {
       label: 'Gender',
